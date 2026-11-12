@@ -8,11 +8,6 @@ import { Layers, Zap, Gem, Check, ArrowRight, Phone, MessageCircle } from "lucid
 import { InstagramIcon } from "@/components/icons/InstagramIcon";
 
 export default function ArtistsRoster() {
-  const handleScrollToBooking = () => {
-    const el = document.querySelector("#booking");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
   const serviceIcons = {
     tattoo: Layers,
     "tattoo-removal": Zap,

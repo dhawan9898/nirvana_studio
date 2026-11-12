@@ -1,19 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
-import { STUDIO_DETAILS, PortfolioItem } from "@/data/studioData";
+import { PortfolioItem } from "@/data/studioData";
 import {
   Sparkles,
-  Calendar,
-  Clock,
   UploadCloud,
   CheckCircle2,
   X,
   FileCheck,
   Send,
   MessageCircle,
-  Shield,
   Layers,
   Zap,
   Gem,

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ShieldCheck, CheckCircle2, HeartHandshake } from "lucide-react";
+import { CheckCircle2, HeartHandshake } from "lucide-react";
 
 export default function ExperienceCraft() {
   const steps = [

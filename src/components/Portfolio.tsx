@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { PORTFOLIO_WORKS, PortfolioItem, STUDIO_DETAILS } from "@/data/studioData";
+import { PORTFOLIO_WORKS, PortfolioItem, } from "@/data/studioData";
 import { X, ZoomIn, MessageCircle, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 
 type FilterType = "all" | "Tattoo" | "Tattoo Removal" | "Piercing";
@@ -17,22 +17,26 @@ export default function Portfolio() {
       ? PORTFOLIO_WORKS
       : PORTFOLIO_WORKS.filter((item) => item.serviceType === activeFilter);
 
-  // Reset pagination when filter changes
+  const modalOpen = selectedItemIndex !== null;
+  // Lock page scroll while the lightbox is open
   useEffect(() => {
-    setVisibleCount(16);
-  }, [activeFilter]);
+    if (!modalOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [modalOpen]);
 
   const displayedItems = filteredItems.slice(0, visibleCount);
   const hasMore = visibleCount < filteredItems.length;
 
   const handleOpenModal = (index: number) => {
     setSelectedItemIndex(index);
-    document.body.style.overflow = "hidden";
   };
 
   const handleCloseModal = () => {
     setSelectedItemIndex(null);
-    document.body.style.overflow = "auto";
   };
 
   const handlePrevInModal = (e: React.MouseEvent) => {
@@ -94,7 +98,10 @@ export default function Portfolio() {
             {filterTabs.map((tab) => (
               <button
                 key={tab.value}
-                onClick={() => setActiveFilter(tab.value)}
+                onClick={() => {
+                  setActiveFilter(tab.value);
+                  setVisibleCount(16);
+                }}
                 className={`px-4 sm:px-5 py-2 rounded-full text-xs uppercase tracking-wider transition-all font-medium cursor-pointer flex items-center gap-1.5 ${
                   activeFilter === tab.value
                     ? "bg-[#D4AF37] text-[#0D0D0D] shadow-sm font-semibold"

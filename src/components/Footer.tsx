@@ -7,8 +7,6 @@ import { STUDIO_DETAILS } from "@/data/studioData";
 import {
   Phone,
   MessageCircle,
-  MapPin,
-  Clock,
   ArrowUp,
   Sparkles,
   Check,

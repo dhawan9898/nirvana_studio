@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { FAQS, FAQItem, STUDIO_DETAILS } from "@/data/studioData";
+import { FAQS, STUDIO_DETAILS } from "@/data/studioData";
 import { ChevronDown, HelpCircle, Search, MessageCircle, Sparkles } from "lucide-react";
 
 interface FAQSectionProps {

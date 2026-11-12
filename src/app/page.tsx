@@ -7,13 +7,9 @@ import Hero from "@/components/Hero";
 import { STUDIO_DETAILS } from "@/data/studioData";
 import {
   ArrowRight,
-  Star,
   CheckCircle2,
-  Clock,
-  MapPin,
   MessageCircle,
   Layers,
-  Sparkles,
   Camera,
   Calendar,
 } from "lucide-react";

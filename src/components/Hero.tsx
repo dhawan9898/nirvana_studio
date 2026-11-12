@@ -3,15 +3,10 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Phone, MessageCircle, ShieldCheck, Check } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 import { STUDIO_DETAILS } from "@/data/studioData";
 
 export default function Hero() {
-  const handleScrollTo = (id: string) => {
-    const el = document.querySelector(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 px-5 sm:px-8 overflow-hidden bg-[#0D0D0D]">
       {/* Background Studio Photo */}

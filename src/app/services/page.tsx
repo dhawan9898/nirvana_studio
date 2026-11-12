@@ -6,8 +6,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ExperienceCraft from "@/components/ExperienceCraft";
 import FAQSection from "@/components/FAQSection";
-import { SERVICES, STUDIO_DETAILS } from "@/data/studioData";
-import { Layers, Zap, Gem, Check, ArrowRight, MessageCircle, Calendar } from "lucide-react";
+import { SERVICES } from "@/data/studioData";
+import { Layers, Zap, Gem, Check, MessageCircle, Calendar } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Studio Services | Tattoos, Pico Laser Removal & Piercing | Nirvana Tattoo Studio",

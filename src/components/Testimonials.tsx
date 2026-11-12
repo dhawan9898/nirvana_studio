@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { GOOGLE_REVIEWS, INSTAGRAM_POSTS, STUDIO_DETAILS, GoogleReview } from "@/data/studioData";
-import { Star, ChevronLeft, ChevronRight, Quote, CheckCircle2, ZoomIn, X, MessageCircle } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight, CheckCircle2, ZoomIn, X, MessageCircle } from "lucide-react";
 import { GoogleIcon } from "@/components/icons/GoogleIcon";
 import { InstagramIcon } from "@/components/icons/InstagramIcon";
 
@@ -17,10 +17,16 @@ export default function Testimonials() {
     ? GOOGLE_REVIEWS
     : GOOGLE_REVIEWS.filter((r) => r.serviceType === filter);
 
-  // Keep index within bounds when filter changes
+  // Lock page scroll while the lightbox is open
+  const lightboxOpen = lightboxImage !== null;
   useEffect(() => {
-    setCurrentIndex(0);
-  }, [filter]);
+    if (!lightboxOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [lightboxOpen]);
 
   // Auto-rotation every 7 seconds when not paused
   useEffect(() => {
@@ -48,12 +54,10 @@ export default function Testimonials() {
       alt: review.workTag,
       tag: `${review.workTag} — Work done for ${review.name}`,
     });
-    document.body.style.overflow = "hidden";
   };
 
   const handleCloseLightbox = () => {
     setLightboxImage(null);
-    document.body.style.overflow = "auto";
   };
 
   return (
@@ -86,7 +90,10 @@ export default function Testimonials() {
             {(["All", "Tattoo", "Tattoo Removal", "Piercing"] as const).map((cat) => (
               <button
                 key={cat}
-                onClick={() => setFilter(cat)}
+                onClick={() => {
+                  setFilter(cat);
+                  setCurrentIndex(0);
+                }}
                 className={`px-4 sm:px-5 py-1.5 rounded-full text-xs uppercase tracking-wider transition-all font-medium cursor-pointer ${
                   filter === cat
                     ? "bg-[#D4AF37] text-[#0D0D0D] shadow-sm"
